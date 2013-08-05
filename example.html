@@ -1,0 +1,115 @@
+<html>
+	<head>
+	</head>
+	<body>
+    <script src="libs/knockout-2.3.0.min.js" type="text/javascript"></script>
+    <script src="src/knockout.files.js" type="text/javascript"></script>
+
+		<style>
+          .thumbnail {
+            height: 100px;
+            border: 1px solid #000;
+            margin: 10px 5px 0 0;
+          }
+
+          #progress_slow_file_container
+          {
+            display: block;
+            background-color: #ee2222;
+            width: 250px;
+            padding: 10px;
+          }
+
+          #progress_slow_file
+          {
+            display: block;
+            background-color: #00FF55;
+            width: 0;
+            height: 15px;
+          }
+
+          #fake-avatar-container
+          {
+            display: block;
+            width: 90px;
+            height: 90px;
+            border: 1px solid #000;
+            background-repeat: no-repeat;
+            background-image: url(data:image/jpeg;base64,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);
+          }
+
+          #avatar_file
+          {
+            width: 100%;
+            height: 100%;
+            -moz-opacity:0;
+            filter:alpha(opacity: 0);
+            opacity: 0;
+          }
+        </style>
+
+        <label for="image_files">Load Multiple Image Files</label>
+        <input type="file" id="image_files" multiple
+        data-bind="files: { onLoaded: MultipleImageFilesLoadedCallback, fileFilter: 'image.*'}" />
+        <div id="loaded_images_files"></div>
+
+        <label for="text_file">Load Single Text File</label>
+        <input type="file" id="text_file"
+        data-bind="files: { onLoaded: TextFileLoadedCallback, fileFilter: 'text.*|application.*', readAs: 'text'}" />
+        <div id="loaded_text_file"></div>
+
+        <label for="slow_file">Show File Progress (In most cases needs to be over 5mb to see progress)</label>
+        <input type="file" id="slow_file"
+        data-bind="files: { onLoaded: SlowFileLoadedCallback, onProgress: SlowFileProgressCallback}" />
+        <div id="progress_slow_file_container">
+            <div id="progress_slow_file"></div>
+        </div>    
+        <div id="loaded_slow_file"></div>
+
+        <label for="image_files">Make It Look Like An Avatar, click it to upload</label>
+        <div id="fake-avatar-container">
+            <input type="file" id="avatar_file"
+            data-bind="files: { onLoaded: AvatarLoadedCallback, fileFilter: 'image.*'}" />
+        </div>
+
+        <script>
+
+            var simulateSleep = function(milliseconds) {
+                var date = new Date();
+                var currentDate = null;
+                do { currentDate = new Date(); }
+                while(currentDate-date < milliseconds);
+            }
+
+            var viewModel = {
+                MultipleImageFilesLoadedCallback: function(file, data) {
+                    var span = document.createElement('span');
+                    span.innerHTML = ['<img class="thumbnail" src="', data,
+                                      '" title="', escape(file.name), '"/>'].join('');
+                    document.getElementById('loaded_images_files').insertBefore(span, null);
+                },
+                TextFileLoadedCallback: function(file, data) {
+                    document.getElementById('loaded_text_file').innerHTML = data;
+                },
+                SlowFileLoadedCallback: function(file, data) {
+
+                    document.getElementById('loaded_slow_file').innerHTML = "Loaded File";
+                    document.getElementById('progress_slow_file')
+                            .setAttribute("style","width:100%");
+                },
+                SlowFileProgressCallback: function(file, amountLoaded, totalAmount) {
+                    var percentLoaded = Math.round((amountLoaded/totalAmount)*100);
+                    document.getElementById('progress_slow_file')
+                            .setAttribute("style","width:" + percentLoaded + "%");
+                    simulateSleep(250);
+                },
+                AvatarLoadedCallback: function(file, data) {
+                    document.getElementById('fake-avatar-container')
+                            .setAttribute("style","background-image: url(" + data + ")");
+                }
+            };
+
+            ko.applyBindings(viewModel);
+        </script>
+	</body>
+</html>
