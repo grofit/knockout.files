@@ -1,10 +1,10 @@
 # Knockout.Files
 
-A simple binding for knockout 2.* to allow you to load files into the browser, using the HTML5 FileReader functionality.
+A simple binding for knockout 2.3+ to allow you to load files into the browser, using the HTML5 FileReader functionality.
 
 ## Installing
 
-Add knockout-2.*.js to your project, then knockout.files.js to your project..
+Add knockout-2.3.js to your project, then knockout.files.js to your project..
 
 ## Example
 
