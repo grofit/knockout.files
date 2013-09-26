@@ -58,7 +58,7 @@
         data-bind="files: { onLoaded: TextFileLoadedCallback, fileFilter: 'text.*|application.*', readAs: 'text'}" />
         <div id="loaded_text_file"></div>
 
-        <label for="slow_file">Show File Progress (In most cases needs to be over 5mb to see progress)</label>
+        <label for="slow_file">Show File Progress (The bars loading is based upon file size and computer speed etc)</label>
         <input type="file" id="slow_file"
         data-bind="files: { onLoaded: SlowFileLoadedCallback, onProgress: SlowFileProgressCallback}" />
         <div id="progress_slow_file_container">
@@ -72,6 +72,11 @@
             data-bind="files: { onLoaded: AvatarLoadedCallback, fileFilter: 'image.*'}" />
         </div>
 
+		<label for="constrained_file">Limit the file size in bytes and/or filter for the file (allow images < 50kb)</label>
+		<input type="file" id="constrained_file"
+		data-bind="files: { onLoaded: FileSizeCallback, onError: FileSizeErrorCallback, fileFilter: 'image.*', maxFileSize: 51200 }" />
+		<div id="error-output"></div>
+		
         <script>
 
             var simulateSleep = function(milliseconds) {
@@ -106,6 +111,12 @@
                 AvatarLoadedCallback: function(file, data) {
                     document.getElementById('fake-avatar-container')
                             .setAttribute("style","background-image: url(" + data + ")");
+                },
+				FileSizeCallback: function(file, data) {
+                    document.getElementById('error-output').innerHTML = "File passed the criteria";
+                },
+				FileSizeErrorCallback: function(file, error) {
+                    document.getElementById('error-output').innerHTML = error;
                 }
             };
 

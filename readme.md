@@ -30,7 +30,8 @@ The available options for this binding are:
 * **onLoaded** - The main callback for when the file has been loaded, returns file object and file data
 * **onProgress** - The progress callback which is fired at intervals while loading, returns file object, amountLoaded and totalAmount
 * **onError** - The callback for when things didnt go how you expected...
-* **fileFilter** - The regex pattern to match the mime types against, e.g (image.*, application.*|text.*)
+* **fileFilter** - The regex pattern to match the mime types against, e.g (image.*, application.*|text.*), if a file does not meet the filter it will raise an error
+* **maxFileSize** - The maximum file size for loaded files in bytes, if a file exceeds the file size it will raise an error
 * **readAs** - to indicate how you want to read the file, options are (text, image, binary, array), the default behaviour is image
 
 The only required argument is the loaded callback, which can be defined as a root argument:
