@@ -2,6 +2,8 @@
 
 A simple binding for knockout 2.3+ to allow you to load files into the browser, using the HTML5 FileReader functionality.
 
+Now with module loader and drag and drop support... SUCH WOW!
+
 ## Installing
 
 Add knockout-2.3.js to your project, then knockout.files.js to your project..
@@ -33,6 +35,8 @@ The available options for this binding are:
 * **fileFilter** - The regex pattern to match the mime types against, e.g (image.*, application.*|text.*), if a file does not meet the filter it will raise an error
 * **maxFileSize** - The maximum file size for loaded files in bytes, if a file exceeds the file size it will raise an error
 * **readAs** - to indicate how you want to read the file, options are (text, image, binary, array), the default behaviour is image
+* **allowDrop** - to indicate you want to enable drag and drop functionality for files on this element
+* **hoverClass** - the class to apply when you are hovering a file over the drag and drop compatible dropzone
 
 The only required argument is the loaded callback, which can be defined as a root argument:
 
