@@ -102,6 +102,10 @@
 				}
 			};
 
+			if (!document.addEventListener) {
+				return; //IE8 won't work with addEventListener, avoid JS error
+			}
+
 			element.addEventListener('change', handleFileSelected, false);
 
 			if(allowDrop) {
